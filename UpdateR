@@ -7,3 +7,7 @@ updateR()
 # this will start the updating process of your R installation.  
 # It will check for newer versions, and if one is available, will guide you through the decisions you'd need to make.
 # Import from website: https://www.r-statistics.com/2013/03/updating-r-from-r-on-windows-using-the-installr-package/
+
+
+install.packages("package's name", repos=c("http://rstudio.org/_packages", "http://cran.rstudio.com"))
+# Install the packages when updated [used the RStudio package installer or directly from CRAN, it doesn't install the dependencies]
