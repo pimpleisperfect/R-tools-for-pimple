@@ -1,0 +1,16 @@
+
+% You have to replace the spaces with empty strings before doing the conversion:
+
+x <- c("2 416", "143", "280", "2 503")
+% Immediate conversion fails, because "2 416" isn't a number:
+
+as.numeric(x)
+% [1]  NA 143 280  NA
+% Warning message:
+% NAs introduced by coercion 
+
+
+%%Use gsub() to replace spaces with empty strings, then convert:
+
+as.numeric(gsub(" ", "", x))
+% [1] 2416  143  280 2503
