@@ -1,2 +1,13 @@
 # traslate all the factor to numeric in "data" data frame
 data[] <- lapply(data, function(x) as.numeric(as.character(x)))
+
+#creat a plot from huge number to small number
+c.tab <- crisis.c.f %>%
+  group_by(Diag_Clin_Group) %>%
+  summarise(.count = n())
+# c.tab$Diag.f <- factor(c.tab$Diag_Clin_Group, levels = c.tab$Diag_Clin_Group[order(c.tab$.count,decreasing = F)])
+# c.tab$Diag.f <- factor(c.tab$Diag_Clin_Group, levels = c("Other","Mood_Bipolar","SP","Mood_Dep","SUD"))
+ggplot(data = c.tab, aes(x = factor(Diag_Clin_Group, levels = c("Other","Mood_Bipolar","SP","Mood_Dep","SUD")), y = .count)) + geom_bar(stat = "identity") +
+  coord_flip() + labs(title = "Bar Chart of Clinical Category", x = "Clinical Group",  y = "Number of Individuals") + 
+  theme_bw()
+
