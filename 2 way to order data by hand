@@ -1,0 +1,24 @@
+set.seed(2113)
+
+A <- data.frame(.provnames = as.factor(sample(c("a","b","c"),size = 40,replace =  T)))
+
+## Way 1
+
+.target <- c("b","c","a")
+
+.table <- data.frame(.name = .target,.index = 1:length(.target), stringsAsFactors = F)
+
+A %>%
+  mutate(.provnames1 = as.character(.provnames)) %>%
+  left_join(.table, by = c(".provnames1" = ".name")) %>%
+  arrange(.index)
+
+## Way 2
+A$.provnames1 <- factor(A$.provnames , levels = c("b","c","a"))
+
+A %>%
+  arrange(.provnames1)
+
+Michael M Thomas, Performance Analyst
+Office of Performance Analysis
+470-270-6253
